@@ -12,7 +12,7 @@ anomalib/docs
 cache
 # Test-related files and directories
 tmp*
-
+.tmp
 # Jupyter Notebooks
 notebooks/500_use_cases/501_dobot/
 !notebooks/500_use_cases/501_dobot/*.ipynb
