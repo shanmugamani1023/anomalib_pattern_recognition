@@ -10,6 +10,9 @@ so, i followed the docs -https://anomalib.readthedocs.io/en/latest/markdown/guid
 mentioned in that link
 
 ## Train
+## When training i got os windows error -
+i solved it by opening vs code in admin mode.
+
 3.My first model is based on Patch core for classification-you can see in below file 
 train_patch_core_architechture_classification_true_false.ipynb
 
@@ -41,5 +44,6 @@ engine.fit(model=model, datamodule=datamodule)
 1.Try with only true images
 2.Need to try different datasets,engines,diff,epochs
 3.Need to track experiments using ML flow
+4.Need to run script in command line
 
 
