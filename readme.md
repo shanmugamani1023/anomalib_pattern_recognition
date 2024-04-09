@@ -1,4 +1,10 @@
 ## Installation
+1.steps:
+Use only python 3.10
+1.pip install anomalib
+2.!anomalib install -h --for help
+3. !anomalib install -v -- for install
+
 1.I tried both methods via pip and via source -like mentioned in this link
 https://github.com/openvinotoolkit/anomalib?tab=readme-ov-file#-installation
 
@@ -41,9 +47,32 @@ engine = Engine(task=TaskType.SEGMENTATION,accelerator="auto",
 engine.fit(model=model, datamodule=datamodule)
 
 # To do:
-1.Try with only true images
-2.Need to try different datasets,engines,diff,epochs
+1.Try with only true images -tried
+2.Need to try different datasets,engines,diff,epochs -tried 
 3.Need to track experiments using ML flow
 4.Need to run script in command line
 
+# Guidelines:
+1.Try to add 30 to 50 dataset ,dont go beyond it makes cuda gpu memory error
 
+# In gpu :
+1.once your trained one model and that generated model will saved in results/latest
+2.so if you run again train (fit) without changing the file name ,it will through error.
+so,try to change the name of the folder or save the model in local
+
+# if you wanto change epoch ,you have to change in 
+You could check them from either model config
+anomalib/configs/model/efficient_ad.yaml
+
+Line 17 in 7a963e9
+
+ max_epochs: 200 
+or the model implementation
+anomalib/src/anomalib/models/image/patchcore/lightning_model.py
+
+Line 118 in 7a963e9
+
+ return {"gradient_clip_val": 0, "max_epochs": 1, "num_sanity_val_steps": 0} 
+
+ check this link:https://github.com/openvinotoolkit/anomalib/issues/1968
+ 
