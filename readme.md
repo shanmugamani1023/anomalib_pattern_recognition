@@ -76,3 +76,22 @@ Line 118 in 7a963e9
 
  check this link:https://github.com/openvinotoolkit/anomalib/issues/1968
  
+
+ In google colab Gpu:
+ 1. if you want to change epoch size ,you have to press folder dot icon,then you can get usr folder,
+ like this # /usr/local/lib/python3.10/dist-packages/anomalib/cli/utils/installation.py:271
+
+
+ 2. If you want to change epoch you can go to their models and ligtening.py and /image/patchcore/lightning_model.py like this ,but you want change again and again ,each time you have to 
+    1.Delete Cache,tmp
+    2.Restart run time /run all
+
+For inference :
+i changed in https://vscode.dev/github/shanmugamani1023/anomalib_pattern_recognition/blob/maine-packages/anomalib/deploy/inferencers/openvino_inferencer.py#L278 
+
+        if "image_threshold" in metadata:
+            pred_idx = pred_score >= metadata["image_threshold"]
+            # pred_label = LabelName.ABNORMAL if pred_idx else LabelName.NORMAL
+            pred_label = "ABNORMAL" if pred_idx else "NORMAL"
+i commented LabelName.ABNORMAL if pred_idx else LabelName.NORMAL and i changed it into string type
+

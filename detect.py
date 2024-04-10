@@ -15,9 +15,9 @@ from anomalib.models import Padim
 import os
 from pathlib import Path
 
-image_path = "datasets/hazelnut_toy/crack/01.jpg"
+image_path = "D:/Shravtek/neutech_airfillter/anamolib/anomalib/datasets/bottle/good/008.png"
 image = read_image(path=image_path)
-output_path = "D:/Shravtek/neutech_airfillter/anamolib/anomalib/results/Patchcore/hazelnut_toy/latest"
+output_path = "D:/Shravtek/neutech_airfillter/anamolib/Models/bottle/epoch_3_works_good"
 
 print(output_path)
 openvino_model_path = output_path+"/weights"+"/openvino"+"/model.bin"
@@ -30,6 +30,15 @@ inferencer = OpenVINOInferencer(
 )
 predictions = inferencer.predict(image=image_path)
 print(predictions.pred_score, predictions.pred_label)
+
+print(type(predictions.pred_label))
+if predictions.pred_label=="ABNORMAL":
+    print("ABNORMAL")
+    cv2.putText(image,str("NOK"), (100, 100), cv2.FONT_HERSHEY_SIMPLEX,2,(0, 0, 255), 3)
+else:
+    print("NORMAL")
+    cv2.putText(image,str("OK"), (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 2,(0, 255, 0), 3)
+
 cv2.imshow("image",image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

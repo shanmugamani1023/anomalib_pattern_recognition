@@ -10,6 +10,7 @@ anomalib/.tmp
 anomalib/cache
 anomalib/docs
 cache
+models
 # Test-related files and directories
 tmp*
 .tmp
