@@ -95,3 +95,26 @@ i changed in https://vscode.dev/github/shanmugamani1023/anomalib_pattern_recogni
             pred_label = "ABNORMAL" if pred_idx else "NORMAL"
 i commented LabelName.ABNORMAL if pred_idx else LabelName.NORMAL and i changed it into string type
 
+Call backs:
+we can add call back using 
+https://anomalib.readthedocs.io/en/latest/markdown/guides/reference/callbacks/index.html
+
+
+Logger or track experiments:
+check this file ,i added wandb
+D:\Shravtek\neutech_airfillter\anamolib\train_only_on_true_images.ipynb
+https://anomalib.readthedocs.io/en/latest/markdown/guides/reference/loggers/index.html
+
+we have to restart our kernel each experiments,
+
+when i add 
+Tenlogger = AnomalibWandbLogger( project="my-awesome-project",config={
+    "architecture": "Patchcore",
+    "dataset": "hazelnut_toy",
+    "epochs": 3,})
+
+    i got arguments error,
+    i solved it by degrade ipython into pip install ipython==8.16.1
+
+
+    
